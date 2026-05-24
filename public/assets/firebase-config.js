@@ -9,5 +9,5 @@ export const firebaseConfig = {
 };
 
 export function isFirebaseConfigReady() {
-  return true;
+  return !!firebaseConfig.apiKey;
 }
