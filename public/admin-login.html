@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin login | Chez Rachid Market</title>
+    <meta name="description" content="Secure admin login for Chez Rachid Market.">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script defer src="/assets/app.js"></script>
+    <script type="module" src="/assets/firebase-auth.js"></script>
+    <script defer src="/assets/admin-login.js"></script>
+  </head>
+  <body data-page="login" class="login-page">
+    <main class="login-shell">
+      <section class="login-visual" aria-hidden="true"></section>
+      <section class="login-card">
+        <a class="brand" href="/">
+          <span class="brand-mark">CRM</span>
+          <span>
+            <strong>Chez Rachid Market</strong>
+            <small>Secure owner dashboard</small>
+          </span>
+        </a>
+
+        <div class="login-copy">
+          <p class="eyebrow">Admin access</p>
+          <h1>Sign in to manage products.</h1>
+          <p>Only the approved Google account can open the dashboard and update the catalogue.</p>
+        </div>
+
+        <div class="login-access-note">
+          <span>Protected dashboard</span>
+          <strong>Google login required</strong>
+        </div>
+
+        <button class="button button-dark login-google" type="button" data-google-login disabled>
+          <span class="google-mark">G</span>
+          Continue with Google
+        </button>
+
+        <p class="status-message" data-login-status>Preparing secure sign in...</p>
+        <p class="login-account" data-login-account></p>
+
+        <div class="login-setup" data-login-setup hidden>
+          <strong>Firebase setup required</strong>
+          <p>Add the Firebase web app values in <code>public/assets/firebase-config.js</code>, enable Google Authentication in Firebase, and set <code>FIREBASE_PROJECT_ID</code> when running the server.</p>
+        </div>
+
+        <div class="button-row">
+          <a class="button button-outline" href="/">Return to store</a>
+          <a class="button button-soft" href="/contact.html">Contact</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

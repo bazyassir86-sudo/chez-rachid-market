@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Produits | Chez Rachid Market</title>
+    <meta name="description" content="Catalogue des produits ajoutés par Chez Rachid Market.">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script defer src="/assets/app.js"></script>
+  </head>
+  <body data-page="products">
+    <div class="top-strip">
+      <span>Souk Jdid, Essaouira, Morocco</span>
+      <span>WhatsApp: 06 72 42 64 33</span>
+      <span class="arabic" lang="ar">المنتجات المضافة من لوحة الإدارة تظهر هنا</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark">CRM</span>
+        <span>
+          <strong>Chez Rachid Market</strong>
+          <small>Blankets, bedding and Moroccan textiles</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="/" data-nav="home">Accueil</a>
+        <a href="/products.html" data-nav="products">Produits</a>
+        <a href="/about.html" data-nav="about">À propos</a>
+        <a href="/contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="phone-link" href="tel:+212672426433">06 72 42 64 33</a>
+        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="page-hero">
+        <div class="page-hero-inner">
+          <p class="eyebrow">Catalogue</p>
+          <h1>Produits disponibles.</h1>
+          <p>Cette page affiche uniquement les produits ajoutes par la boutique.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="catalog-tools" aria-label="Filtres du catalogue">
+            <div class="field">
+              <label for="productSearch">Recherche</label>
+              <input id="productSearch" type="search" placeholder="Nom, description, catégorie..." autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="categoryFilter">Catégorie</label>
+              <select id="categoryFilter"></select>
+            </div>
+            <div class="field">
+              <label for="stockFilter">Stock</label>
+              <select id="stockFilter">
+                <option value="">Tous les statuts</option>
+                <option value="in_stock">En stock</option>
+                <option value="limited">Stock limité</option>
+                <option value="out_of_stock">Rupture</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sortProducts">Tri</label>
+              <select id="sortProducts">
+                <option value="newest">Plus récents</option>
+                <option value="price_asc">Prix croissant</option>
+                <option value="price_desc">Prix décroissant</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <p><strong data-product-count>0 produits</strong></p>
+          </div>
+          <div class="product-grid" data-products-grid></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>Chez Rachid Market</strong>
+          <p>Rachid Saghir · Souk Jdid, Essaouira, Morocco</p>
+        </div>
+        <div class="footer-links">
+          <a href="/">Accueil</a>
+          <a href="/contact.html">WhatsApp</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

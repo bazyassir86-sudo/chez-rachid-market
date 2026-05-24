@@ -1,0 +1,12 @@
+{
+  "name": "chez-rachid-market",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Professional e-commerce website for Chez Rachid Market.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin | Chez Rachid Market</title>
+    <meta name="description" content="Dashboard propriétaire Chez Rachid Market.">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script defer src="/assets/app.js"></script>
+    <script type="module" src="/assets/firebase-auth.js"></script>
+    <script defer src="/assets/admin.js"></script>
+  </head>
+  <body data-page="admin">
+    <div class="top-strip">
+      <span>Dashboard propriétaire</span>
+      <span>Produits synchronisés avec le site public</span>
+      <span class="arabic" lang="ar">إضافة وتعديل المنتجات</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark">CRM</span>
+        <span>
+          <strong>Chez Rachid Market</strong>
+          <small>Blankets, bedding and Moroccan textiles</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="/" data-nav="home">Accueil</a>
+        <a href="/products.html" data-nav="products">Produits</a>
+        <a href="/about.html" data-nav="about">À propos</a>
+        <a href="/contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="phone-link" href="tel:+212672426433">06 72 42 64 33</a>
+        <button class="button button-outline button-small admin-logout-button" type="button" data-admin-logout>Logout</button>
+        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="page-hero">
+        <div class="page-hero-inner">
+          <p class="eyebrow">Admin</p>
+          <h1>Gestion des produits.</h1>
+          <p>Ajoutez, modifiez ou supprimez les articles. Le catalogue public se met à jour automatiquement.</p>
+          <p class="admin-session" data-admin-user>Checking secure admin session...</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner admin-layout">
+          <section class="admin-card">
+            <h2>Produit</h2>
+            <form data-product-form>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Nom du produit</label>
+                  <input id="name" name="name" type="text" required dir="auto">
+                </div>
+                <div class="field">
+                  <label for="price">Prix en MAD</label>
+                  <input id="price" name="price" type="number" min="0" step="0.01" required>
+                </div>
+                <div class="field">
+                  <label for="category">Catégorie</label>
+                  <select id="category" name="category" required>
+                    <option value="Couvertures">Couvertures</option>
+                    <option value="Literie">Literie</option>
+                    <option value="Housses et couvre-lits">Housses et couvre-lits</option>
+                    <option value="Textiles marocains">Textiles marocains</option>
+                    <option value="Oreillers">Oreillers</option>
+                    <option value="Autre">Autre</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="customCategory">Catégorie personnalisée</label>
+                  <input id="customCategory" name="customCategory" type="text" placeholder="Optionnel" dir="auto">
+                </div>
+                <div class="field wide">
+                  <label for="description">Description</label>
+                  <textarea id="description" name="description" required dir="auto"></textarea>
+                </div>
+                <div class="field">
+                  <label for="imageUrl">Image URL</label>
+                  <input id="imageUrl" name="imageUrl" type="url" placeholder="https://..." dir="ltr">
+                </div>
+                <div class="field">
+                  <label for="imageUpload">Upload image</label>
+                  <input id="imageUpload" name="imageUpload" type="file" accept="image/*">
+                </div>
+                <div class="field">
+                  <label for="stockStatus">Stock status</label>
+                  <select id="stockStatus" name="stockStatus" required>
+                    <option value="in_stock">En stock</option>
+                    <option value="limited">Stock limité</option>
+                    <option value="out_of_stock">Rupture</option>
+                  </select>
+                </div>
+                <label class="check-field">
+                  <input type="checkbox" name="bestSeller">
+                  <span>Afficher comme best-seller</span>
+                </label>
+                <div class="field wide">
+                  <label>Aperçu</label>
+                  <div class="preview-box" data-image-preview></div>
+                </div>
+              </div>
+              <div class="admin-actions">
+                <button class="button button-dark" type="submit" data-submit-product>Ajouter le produit</button>
+                <button class="button button-outline is-hidden" type="button" data-cancel-edit>Annuler</button>
+              </div>
+              <p class="status-message" data-admin-status></p>
+            </form>
+          </section>
+
+          <section class="admin-card">
+            <h2>Catalogue</h2>
+            <div class="stats-grid">
+              <div class="stat">
+                <strong data-stat-total>0</strong>
+                <span>Produits</span>
+              </div>
+              <div class="stat">
+                <strong data-stat-stock>0</strong>
+                <span>Disponibles</span>
+              </div>
+              <div class="stat">
+                <strong data-stat-best>0</strong>
+                <span>Best sellers</span>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Produit</th>
+                    <th>Catégorie</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Best seller</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-admin-products></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>Chez Rachid Market</strong>
+          <p>Rachid Saghir · Souk Jdid, Essaouira, Morocco</p>
+        </div>
+        <div class="footer-links">
+          <a href="/">Accueil</a>
+          <a href="/products.html">Produits</a>
+          <a href="/contact.html">WhatsApp</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
