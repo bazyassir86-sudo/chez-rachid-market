@@ -1,7 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCYftvDf8ySgxJwdb8ihTJatP2ITUT0kB4",
   authDomain: "chez-rachid-market.firebaseapp.com",
   projectId: "chez-rachid-market",
@@ -11,7 +8,6 @@ const firebaseConfig = {
   measurementId: "G-TJPYQL5Z9X"
 };
 
-const app = initializeApp(firebaseConfig);
-
-export const auth = getAuth(app);
-export const provider = new GoogleAuthProvider();
+export function isFirebaseConfigReady() {
+  return true;
+}
